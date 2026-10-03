@@ -1,16 +1,8 @@
 mtcars_cyl6 <- df_mtcars %>%#
 	filter(cyl == 6)
-mtcars_cyl6 <- df_mtcars %>%#
-	filter(cyl == 6)
 mtcars_g35 <- df_mtcars %>%#
 	filterz9gear == 3, gear == 5)
 mtcars_cyl6 <- df_mtcars %>%#
-	filter(cyl == 6)
-mtcars_cyl6 <- df_mtcars %>%#
-	filter(cyl == 6)
-mtcars_cyl6 <- df_mtcars %>%#
-	filter(cyl == 6)
-(mtcars_cyl6 <- df_mtcars %>%#
 	filter(cyl == 6)
 (mtcars_cyl6 <- df_mtcars %>%#
 	filter(cyl == 6)
