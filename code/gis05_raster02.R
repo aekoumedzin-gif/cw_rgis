@@ -23,6 +23,10 @@ ggplot() +
   geom_sf(data = sf_nc_county,
           alpha = 0.25)
 
+writeRaster(spr_prec_nc,
+            "data/spr_prec_nc.tif",
+            overwrite = TRUE)
+
 # Merge
 
 spr_nw <- rast("data/spr_tmp_ncnw.tif")
