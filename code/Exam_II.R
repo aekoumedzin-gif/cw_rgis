@@ -36,7 +36,6 @@ sf_site <- st_as_sf(
   crs = 4326
 )
 
-
 # Q2.
 # From `sf_nc_county`, select only the county polygons of the following counties: 
 #   "guilford", "randolph", "davidson", and "forsyth". 
@@ -48,7 +47,6 @@ sf_four <- sf_nc_county %>%
     "davidson", "forsyth"
   ))
 
-
 # Q3. 
 # Perform a spatial join to identify sites in `sf_site` that fall within 
 #   the four selected counties stored in `sf_four`. 
@@ -57,7 +55,6 @@ sf_four <- sf_nc_county %>%
 
 sf_site_four <- st_join(sf_site, sf_four, join = st_within) %>%
   filter(!is.na(county))
-
 
 # Q4. 
 # Create a map showing the four selected counties (`sf_four`) 
@@ -97,7 +94,6 @@ spr_land <- rast("data/spr_land_reclass.tif")
 
 unique(spr_land)
 
-
 # Q7. 
 # Reclassify the raster `spr_land` to create a new raster object `spr_crop` 
 #   that highlights only cropland areas. 
@@ -116,7 +112,6 @@ rcl <- matrix(c(
 
 spr_crop <- classify(spr_land, rcl = rcl)
 
-
 # Q8. 
 # Crop the cropland raster (`spr_crop`) to the extent of the four selected counties 
 # (`sf_four`; "guilford", "randolph", "davidson", and "forsyth")
@@ -132,7 +127,6 @@ spr_crop_four <- crop(spr_crop, vect(sf_four))
 ggplot() +
   geom_spatraster(data = spr_crop_four) +
   geom_sf(data = sf_four, fill = NA, alpha = 0.5)
-
 
 # Q10. Calculate the proportion of cropland pixels within the four counties 
 #   from the cropped raster (`spr_crop_four`). 
@@ -176,7 +170,6 @@ sf_buff_proj <- st_buffer(sf_site_proj, dist = 3000)
 
 spr_crop_proj <- project(spr_crop_four, "EPSG:32617", method = "near")
 
-
 # Q14. Create a map displaying the projected cropland raster (`spr_crop_proj`) 
 # with 3-km site buffers (`sf_buff_proj`) overlaid.
 
@@ -196,5 +189,3 @@ df_crop_frac <- sf_buff_proj %>%
 df_crop_frac %>%
   arrange(desc(crop_frac)) %>%
   slice(1)
-
-
